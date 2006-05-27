@@ -1,0 +1,36 @@
+.TH analyseplugin 1 "2001 May 14" "ladspa-sdk" "Debian GNU/Linux"
+.SH "NAME"
+analyseplugin \- analyse plugin syntax
+.SH "SYNOPSIS"
+.BI "analyseplugin [\-l] " "plugin name"
+.SH "DESCRIPTION"
+.B analyseplugin
+gives out a detailed information about LADSPA plugin and its properties.
+.SH "OPTIONS"
+.TP
+.B "\-l"
+Gives a brief listing (one line per plugin) instead of a more detailed output.
+.SH "FILES"
+.TP
+.B "/usr/lib/ladspa/*.so"
+LADSPA plugin files are installed here by default.
+.SH "ENVIRONMENT"
+.TP
+.B "LADSPA_PATH"
+should be set to something like
+"/usr/local/lib/ladspa:/usr/lib/ladspa:" for plugins to be found at
+all.
+.PP
+.SH "BUGS"
+Requires environmental variable to work properly.
+.SH "CONFORMING TO"
+.B "LADSPA"
+standard, by 
+.B "linux\-audio\-dev"
+mailing list members.
+.SH "AUTHOR"
+ladspa-sdk was written by Richard Furse (richard@muse.demon.co.uk).
+This manpage was written by Junichi Uekawa (dancer@debian.org).
+.SH "SEE ALSO"
+.BR "listplugins" "(1), " "applyplugin" "(1) "
+

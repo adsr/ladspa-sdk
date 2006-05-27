@@ -1,0 +1,27 @@
+ladspa-sdk for Debian
+---------------------
+
+Hopefully all ladspa-aware programs have a 
+
+Provides: ladspa-plugin (when it is a ladspa-plugin)
+
+or
+
+Recommends: ladspa-plugin (when it uses a ladspa-plugin)
+
+in them.
+
+
+And also, Debian ladspa plugin packages should be installed in 
+/usr/lib/ladspa/
+
+and the search path should be something like 
+/usr/local/lib/ladspa:/usr/lib/ladspa.
+
+LADSPA requires LADSPA_PATH to be set to /usr/lib/ladspa to
+work properly. However, since it is against Debian Policy, I have 
+patched it to work with a default value when LADSPA_PATH is not
+available.
+
+
+ -- Junichi Uekawa <dancer@debian.org>, 3 July 2001

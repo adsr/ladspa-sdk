@@ -1,0 +1,20 @@
+Source: ladspa-sdk
+Section: sound
+Priority: optional
+Maintainer: Junichi Uekawa <dancer@debian.org>
+Build-Depends: debhelper (>> 3.0.0), g++ (>= 4:4.0.0), dpatch
+Standards-Version: 3.6.2
+
+Package: ladspa-sdk
+Architecture: any
+Depends: ${shlibs:Depends}
+Provides: ladspa-host, ladspa-plugin, ladspa-sdk-dev
+Conflicts: ladspa-sdk-dev
+Description: sample tools for linux-audio-dev plugin architecture
+ LADSPA is a free standard specification for audio effect plugins.
+ .
+ Contains sample plugins, and analyseplugin, listplugin, applyplugin 
+ programs, and the ladspa.h, the LADSPA specification.
+ .
+ Please build-depend on this package if you need ladspa.h
+

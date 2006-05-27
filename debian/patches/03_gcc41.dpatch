@@ -1,0 +1,33 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 03_gcc41.dpatch by Ben Hutchings <ben@decadentplace.org.uk>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Fix compile failure with GCC 4.1
+## DP: closes: #355989
+
+@DPATCH@
+--- a/src/plugins/sine.cpp~	2002-07-06 18:23:17.000000000 +0100
++++ b/src/plugins/sine.cpp	2006-03-10 01:34:55.587996975 +0000
+@@ -59,6 +59,22 @@
+ 
+ /*****************************************************************************/
+ 
++LADSPA_Handle instantiateSineOscillator(const LADSPA_Descriptor *,
++					unsigned long SampleRate);
++void connectPortToSineOscillator(LADSPA_Handle Instance,
++				 unsigned long Port,
++				 LADSPA_Data * DataLocation);
++void activateSineOscillator(void * pvHandle);
++void cleanupSineOscillator(void *pvHandle);
++void runSineOscillator_FreqAudio_AmpAudio(LADSPA_Handle Instance,
++					  unsigned long SampleCount);
++void runSineOscillator_FreqAudio_AmpCtrl(LADSPA_Handle Instance,
++					 unsigned long SampleCount);
++void runSineOscillator_FreqCtrl_AmpAudio(LADSPA_Handle Instance,
++					 unsigned long SampleCount);
++void runSineOscillator_FreqCtrl_AmpCtrl(LADSPA_Handle Instance,
++					unsigned long SampleCount);
++
+ class SineOscillator {
+ private:
+ 

@@ -1,0 +1,19 @@
+This package was debianized by Junichi Uekawa <dancer@debian.org> on
+Wed,  9 May 2001 20:19:32 +0900.
+
+It was downloaded from http://www.ladspa.org
+
+Upstream Authors:    
+   Richard W.E. Furse 
+   Paul Barton-Davis
+   Stefan Westerfeld
+
+Copyright:
+
+From license.html:
+
+The LADSPA Software Development Kit and the LADSPA plugin API
+itself are licensed under LGPL version 2.1
+
+See /usr/share/common-licenses/LGPL-2.1 on Debian systems.
+
