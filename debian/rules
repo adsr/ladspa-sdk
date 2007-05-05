@@ -63,7 +63,7 @@ binary-arch: build install
 	dh_installmenu
 	dh_installman debian/analyseplugin.1 debian/applyplugin.1 debian/listplugins.1
 	dh_installchangelogs 
-	dh_link
+	dh_link usr/include/ladspa.h usr/share/doc/ladspa-sdk/ladspa.h.txt 
 	dh_strip
 	dh_compress
 	dh_fixperms

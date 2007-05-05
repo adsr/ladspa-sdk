@@ -1,3 +1,18 @@
+ladspa-sdk (1.1-6) unstable; urgency=low
+
+  * wrong symlink installed, install a better symlink for ladspa.h.txt.
+
+ -- Junichi Uekawa <dancer@debian.org>  Sun,  6 May 2007 08:27:45 +0900
+
+ladspa-sdk (1.1-5) unstable; urgency=low
+
+  * Bug fix: "ladspa-sdk: Broken link in documentation", thanks to Reuben
+    Thomas (Closes: #422377).
+    Install ladspa.h.txt
+  * add pbuilder-test.
+
+ -- Junichi Uekawa <dancer@debian.org>  Sun,  6 May 2007 08:21:44 +0900
+
 ladspa-sdk (1.1-4.1) unstable; urgency=low
 
   * NMU as part of the GCC 4.1 transition.

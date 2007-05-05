@@ -1,0 +1,5 @@
+#!/bin/bash
+# test that ladspa.h works
+set -e
+gcc debian/pbuilder-test/02_ladspah.c -o /tmp/test.o
+/tmp/test.o

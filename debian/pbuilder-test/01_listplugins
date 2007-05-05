@@ -1,0 +1,21 @@
+#!/bin/bash
+# make sure listplugins works.
+
+diff -u <(listplugins 2>&1 | sort ) <( cat <<EOF
+	Mono Amplifier (1048/amp_mono)
+	Simple Delay Line (1043/delay_5s)
+	Simple High Pass Filter (1042/hpf)
+	Simple Low Pass Filter (1041/lpf)
+	Sine Oscillator (Freq:audio, Amp:audio) (1044/sine_faaa)
+	Sine Oscillator (Freq:audio, Amp:control) (1045/sine_faac)
+	Sine Oscillator (Freq:control, Amp:audio) (1046/sine_fcaa)
+	Sine Oscillator (Freq:control, Amp:control) (1047/sine_fcac)
+	Stereo Amplifier (1049/amp_stereo)
+	White Noise Source (1050/noise_white)
+/usr/lib/ladspa/amp.so:
+/usr/lib/ladspa/delay.so:
+/usr/lib/ladspa/filter.so:
+/usr/lib/ladspa/noise.so:
+/usr/lib/ladspa/sine.so:
+Warning: You do not have a LADSPA_PATH environment variable set.
+)
