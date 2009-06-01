@@ -121,7 +121,7 @@ analysePlugin(const char * pcPluginFilename,
 	printf("Yes\n");
       else
 	printf("No\n");    
-      printf("Has deativate() Function: ");
+      printf("Has deactivate() Function: ");
       if (psDescriptor->deactivate != NULL)
 	printf("Yes\n");
       else
@@ -391,7 +391,9 @@ main(const int iArgc, const char ** ppcArgv) {
 	    "Usage:\tanalyseplugin [flags] <LADSPA plugin file name> "
 	    "[<plugin label>].\n"
 	    "Flags:"
-	    "\t-l\tProduce a summary list rather than a verbose report.\n");
+	    "-l  Produce a summary list rather than a verbose report.\n"
+            "Note that the LADSPA_PATH environment variable is used "
+            "to help find plugins.\n");
     return(1);
   }
 
