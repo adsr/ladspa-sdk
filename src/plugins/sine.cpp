@@ -42,6 +42,15 @@ LADSPA_Data g_fPhaseStepBase = 0;
 
 /*****************************************************************************/
 
+inline char * 
+localStrdup(const char * input) {
+  char * output = new char[strlen(input) + 1];
+  strcpy(output, input);
+  return output;
+}
+
+/*****************************************************************************/
+
 void
 initialise_sine_table() {
   if (g_pfSineTable == NULL) {
@@ -92,99 +101,139 @@ private:
   }
 
   friend LADSPA_Handle instantiateSineOscillator(const LADSPA_Descriptor *,
-						 unsigned long SampleRate) {
-    return new SineOscillator(SampleRate);
-  }
-
+						 unsigned long SampleRate);
   friend void connectPortToSineOscillator(LADSPA_Handle Instance,
 					  unsigned long Port,
-					  LADSPA_Data * DataLocation) {
-    switch (Port) {
-    case OSC_FREQUENCY:
-      ((SineOscillator *)Instance)->m_pfFrequency = DataLocation;
-      break;
-    case OSC_AMPLITUDE:
-      ((SineOscillator *)Instance)->m_pfAmplitude = DataLocation;
-      break;
-    case OSC_OUTPUT:
-      ((SineOscillator *)Instance)->m_pfOutput = DataLocation;
-      break;
-    }
-  }
-
-  friend void activateSineOscillator(void * pvHandle) {
-    ((SineOscillator *)pvHandle)->m_lPhase = 0;
-  }
-
+					  LADSPA_Data * DataLocation);
+  friend void activateSineOscillator(void * pvHandle);
   friend void runSineOscillator_FreqAudio_AmpAudio(LADSPA_Handle Instance,
-						   unsigned long SampleCount) {
-    SineOscillator * poSineOscillator = (SineOscillator *)Instance;
-    for (unsigned long lIndex = 0; lIndex < SampleCount; lIndex++) {
-      /* Extract frequency at this point to guarantee inplace
-	 support. */
-      LADSPA_Data fFrequency
-	= (poSineOscillator->m_pfFrequency[lIndex]);
-      poSineOscillator->m_pfOutput[lIndex]
-	= (g_pfSineTable[poSineOscillator->m_lPhase >> SINE_TABLE_SHIFT]
-	   * poSineOscillator->m_pfAmplitude[lIndex]);
-      poSineOscillator->setPhaseStepFromFrequency(fFrequency);
-      poSineOscillator->m_lPhase 
-	+= poSineOscillator->m_lPhaseStep;
-    }
-  }
-
+						   unsigned long SampleCount);
   friend void runSineOscillator_FreqAudio_AmpCtrl(LADSPA_Handle Instance,
-						  unsigned long SampleCount) {
-    SineOscillator * poSineOscillator = (SineOscillator *)Instance;
-    LADSPA_Data fAmplitude = *(poSineOscillator->m_pfAmplitude);
-    for (unsigned long lIndex = 0; lIndex < SampleCount; lIndex++) {
-      /* Extract frequency at this point to guarantee inplace
-	 support. */
-      LADSPA_Data fFrequency
-	= (poSineOscillator->m_pfFrequency[lIndex]);
-      poSineOscillator->m_pfOutput[lIndex]
-	= (g_pfSineTable[poSineOscillator->m_lPhase >> SINE_TABLE_SHIFT]
-	   * fAmplitude);
-      poSineOscillator->setPhaseStepFromFrequency(fFrequency);
-      poSineOscillator->m_lPhase 
-	+= poSineOscillator->m_lPhaseStep;
-    }
-  }
-
+						  unsigned long SampleCount);
   friend void runSineOscillator_FreqCtrl_AmpAudio(LADSPA_Handle Instance,
-						  unsigned long SampleCount) {
-    SineOscillator * poSineOscillator = (SineOscillator *)Instance;
-    poSineOscillator->setPhaseStepFromFrequency
-      (*(poSineOscillator->m_pfFrequency));
-    for (unsigned long lIndex = 0; lIndex < SampleCount; lIndex++) {
-      poSineOscillator->m_pfOutput[lIndex]
-	= (g_pfSineTable[poSineOscillator->m_lPhase >> SINE_TABLE_SHIFT]
-	   * poSineOscillator->m_pfAmplitude[lIndex]);
-      poSineOscillator->m_lPhase 
-	+= poSineOscillator->m_lPhaseStep;
-    }
-  }
-
+						  unsigned long SampleCount);
   friend void runSineOscillator_FreqCtrl_AmpCtrl(LADSPA_Handle Instance,
-						 unsigned long SampleCount) {
-    SineOscillator * poSineOscillator = (SineOscillator *)Instance;
-    LADSPA_Data fAmplitude = *(poSineOscillator->m_pfAmplitude);
-    poSineOscillator->setPhaseStepFromFrequency
-      (*(poSineOscillator->m_pfFrequency));
-    for (unsigned long lIndex = 0; lIndex < SampleCount; lIndex++) {
-      poSineOscillator->m_pfOutput[lIndex]
-	= (g_pfSineTable[poSineOscillator->m_lPhase >> SINE_TABLE_SHIFT]
-	   * fAmplitude);
-      poSineOscillator->m_lPhase 
-	+= poSineOscillator->m_lPhaseStep;
-    }
-  }
-
-  friend void cleanupSineOscillator(void *pvHandle) {
-    delete (SineOscillator *)pvHandle;
-  }
+						 unsigned long SampleCount);
+  friend void cleanupSineOscillator(void *pvHandle);
 
 };
+
+/*****************************************************************************/
+
+LADSPA_Handle 
+instantiateSineOscillator(const LADSPA_Descriptor *,
+                          unsigned long SampleRate) {
+  return new SineOscillator(SampleRate);
+}
+
+/*****************************************************************************/
+
+void 
+connectPortToSineOscillator(LADSPA_Handle Instance,
+                            unsigned long Port,
+                            LADSPA_Data * DataLocation) {
+  switch (Port) {
+  case OSC_FREQUENCY:
+    ((SineOscillator *)Instance)->m_pfFrequency = DataLocation;
+    break;
+  case OSC_AMPLITUDE:
+    ((SineOscillator *)Instance)->m_pfAmplitude = DataLocation;
+    break;
+  case OSC_OUTPUT:
+    ((SineOscillator *)Instance)->m_pfOutput = DataLocation;
+    break;
+  }
+}
+
+/*****************************************************************************/
+
+void
+activateSineOscillator(void * pvHandle) {
+  ((SineOscillator *)pvHandle)->m_lPhase = 0;
+}
+
+/*****************************************************************************/
+
+void 
+runSineOscillator_FreqAudio_AmpAudio(LADSPA_Handle Instance,
+                                     unsigned long SampleCount) {
+  SineOscillator * poSineOscillator = (SineOscillator *)Instance;
+  for (unsigned long lIndex = 0; lIndex < SampleCount; lIndex++) {
+    /* Extract frequency at this point to guarantee inplace
+       support. */
+    LADSPA_Data fFrequency
+      = (poSineOscillator->m_pfFrequency[lIndex]);
+    poSineOscillator->m_pfOutput[lIndex]
+      = (g_pfSineTable[poSineOscillator->m_lPhase >> SINE_TABLE_SHIFT]
+         * poSineOscillator->m_pfAmplitude[lIndex]);
+    poSineOscillator->setPhaseStepFromFrequency(fFrequency);
+    poSineOscillator->m_lPhase 
+      += poSineOscillator->m_lPhaseStep;
+  }
+}
+
+/*****************************************************************************/
+
+void
+runSineOscillator_FreqAudio_AmpCtrl(LADSPA_Handle Instance,
+                                    unsigned long SampleCount) {
+  SineOscillator * poSineOscillator = (SineOscillator *)Instance;
+  LADSPA_Data fAmplitude = *(poSineOscillator->m_pfAmplitude);
+  for (unsigned long lIndex = 0; lIndex < SampleCount; lIndex++) {
+    /* Extract frequency at this point to guarantee inplace
+       support. */
+    LADSPA_Data fFrequency
+      = (poSineOscillator->m_pfFrequency[lIndex]);
+    poSineOscillator->m_pfOutput[lIndex]
+      = (g_pfSineTable[poSineOscillator->m_lPhase >> SINE_TABLE_SHIFT]
+         * fAmplitude);
+    poSineOscillator->setPhaseStepFromFrequency(fFrequency);
+    poSineOscillator->m_lPhase 
+      += poSineOscillator->m_lPhaseStep;
+  }
+}
+
+/*****************************************************************************/
+
+void
+runSineOscillator_FreqCtrl_AmpAudio(LADSPA_Handle Instance,
+                                    unsigned long SampleCount) {
+  SineOscillator * poSineOscillator = (SineOscillator *)Instance;
+  poSineOscillator->setPhaseStepFromFrequency
+    (*(poSineOscillator->m_pfFrequency));
+  for (unsigned long lIndex = 0; lIndex < SampleCount; lIndex++) {
+    poSineOscillator->m_pfOutput[lIndex]
+      = (g_pfSineTable[poSineOscillator->m_lPhase >> SINE_TABLE_SHIFT]
+         * poSineOscillator->m_pfAmplitude[lIndex]);
+    poSineOscillator->m_lPhase 
+      += poSineOscillator->m_lPhaseStep;
+  }
+}
+
+/*****************************************************************************/
+
+void
+runSineOscillator_FreqCtrl_AmpCtrl(LADSPA_Handle Instance,
+                                   unsigned long SampleCount) {
+  SineOscillator * poSineOscillator = (SineOscillator *)Instance;
+  LADSPA_Data fAmplitude = *(poSineOscillator->m_pfAmplitude);
+  poSineOscillator->setPhaseStepFromFrequency
+    (*(poSineOscillator->m_pfFrequency));
+  for (unsigned long lIndex = 0; lIndex < SampleCount; lIndex++) {
+    poSineOscillator->m_pfOutput[lIndex]
+      = (g_pfSineTable[poSineOscillator->m_lPhase >> SINE_TABLE_SHIFT]
+         * fAmplitude);
+    poSineOscillator->m_lPhase 
+      += poSineOscillator->m_lPhaseStep;
+  }
+}
+
+/*****************************************************************************/
+
+void
+cleanupSineOscillator(void *pvHandle) {
+  delete (SineOscillator *)pvHandle;
+}
 
 /*****************************************************************************/
 
@@ -219,9 +268,9 @@ public:
       g_psDescriptors[lPluginIndex]->Properties
 	= LADSPA_PROPERTY_HARD_RT_CAPABLE;
       g_psDescriptors[lPluginIndex]->Maker
-	= strdup("Richard Furse (LADSPA example plugins)");
+	= localStrdup("Richard Furse (LADSPA example plugins)");
       g_psDescriptors[lPluginIndex]->Copyright
-	= strdup("None");
+	= localStrdup("None");
       g_psDescriptors[lPluginIndex]->PortCount 
 	= 3;
       piPortDescriptors
@@ -235,11 +284,11 @@ public:
       g_psDescriptors[lPluginIndex]->PortNames
 	= (const char **)pcPortNames;
       pcPortNames[OSC_FREQUENCY]
-	= strdup("Frequency (Hz)");
+	= localStrdup("Frequency (Hz)");
       pcPortNames[OSC_AMPLITUDE] 
-	= strdup("Amplitude");
+	= localStrdup("Amplitude");
       pcPortNames[OSC_OUTPUT]
-	= strdup("Output");
+	= localStrdup("Output");
       psPortRangeHints 
 	= new LADSPA_PortRangeHint[3];
       g_psDescriptors[lPluginIndex]->PortRangeHints
@@ -280,9 +329,9 @@ public:
       switch (lPluginIndex) {
       case 0:
 	g_psDescriptors[lPluginIndex]->Label
-	  = strdup("sine_faaa");
+	  = localStrdup("sine_faaa");
 	g_psDescriptors[lPluginIndex]->Name 
-	  = strdup("Sine Oscillator (Freq:audio, Amp:audio)");
+	  = localStrdup("Sine Oscillator (Freq:audio, Amp:audio)");
 	piPortDescriptors[OSC_FREQUENCY]
 	  = LADSPA_PORT_INPUT | LADSPA_PORT_AUDIO;
 	piPortDescriptors[OSC_AMPLITUDE]
@@ -292,9 +341,9 @@ public:
 	break;
       case 1:
 	g_psDescriptors[lPluginIndex]->Label
-	  = strdup("sine_faac");
+	  = localStrdup("sine_faac");
 	g_psDescriptors[lPluginIndex]->Name 
-	  = strdup("Sine Oscillator (Freq:audio, Amp:control)");
+	  = localStrdup("Sine Oscillator (Freq:audio, Amp:control)");
 	piPortDescriptors[OSC_FREQUENCY]
 	  = LADSPA_PORT_INPUT | LADSPA_PORT_AUDIO;
 	piPortDescriptors[OSC_AMPLITUDE]
@@ -304,9 +353,9 @@ public:
 	break;
       case 2:
 	g_psDescriptors[lPluginIndex]->Label
-	  = strdup("sine_fcaa");
+	  = localStrdup("sine_fcaa");
 	g_psDescriptors[lPluginIndex]->Name 
-	  = strdup("Sine Oscillator (Freq:control, Amp:audio)");
+	  = localStrdup("Sine Oscillator (Freq:control, Amp:audio)");
 	piPortDescriptors[OSC_FREQUENCY]
 	  = LADSPA_PORT_INPUT | LADSPA_PORT_CONTROL;
 	piPortDescriptors[OSC_AMPLITUDE]
@@ -316,9 +365,9 @@ public:
 	break;
       case 3:
 	g_psDescriptors[lPluginIndex]->Label
-	  = strdup("sine_fcac");
+	  = localStrdup("sine_fcac");
 	g_psDescriptors[lPluginIndex]->Name 
-	  = strdup("Sine Oscillator (Freq:control, Amp:control)");
+	  = localStrdup("Sine Oscillator (Freq:control, Amp:control)");
 	piPortDescriptors[OSC_FREQUENCY]
 	  = LADSPA_PORT_INPUT | LADSPA_PORT_CONTROL;
 	piPortDescriptors[OSC_AMPLITUDE]

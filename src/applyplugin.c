@@ -798,11 +798,13 @@ main(const int iArgc, char * const ppcArgv[]) {
 	    "\t[<LADSPA plugin file name> <plugin label> "
 	    "<Control1> <Control2>...]...\n"
 	    "Flags:"
-	    "\t-s<seconds>\tAdd seconds of silence after end of input file.\n"
+	    "\t-s<seconds>  Add seconds of silence after end of input file.\n"
 	    "\n"
 	    "To find out what control values are needed by a plugin, "
 	    "use the\n"
-	    "\"analyseplugin\" program and check for control input ports.\n");
+	    "\"analyseplugin\" program and check for control input ports.\n"
+            "Note that the LADSPA_PATH environment variable is used "
+            "to help find plugins.\n");
     return(1);
   }
 

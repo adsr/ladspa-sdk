@@ -1,13 +1,12 @@
 ###############################################################################
 #
-# INSTALLATION DIRECTORIES
+# Installation DIRECTORIES
 #
-# Change these if you want to install somewhere else. In particularly
-# you may wish to remove the middle "local/" part of each entry.
+# Change these if you want to install somewhere else.
 
-INSTALL_PLUGINS_DIR	=	/usr/local/lib/ladspa/
+INSTALL_PLUGINS_DIR	=	/usr/lib/ladspa/
 INSTALL_INCLUDE_DIR	=	/usr/include/
-INSTALL_BINARY_DIR	=	/usr/local/bin/
+INSTALL_BINARY_DIR	=	/usr/bin/
 
 ###############################################################################
 #
@@ -51,17 +50,18 @@ test:	/tmp/test.wav ../snd/noise.wav always
 	@echo ---------------------------------------------
 	@echo First listen to the white noise input signal:
 	@echo ---------------------------------------------
-	play ../snd/noise.wav
+	-sndfile-play ../snd/noise.wav
 	@echo -------------------------
 	@echo Compare to plugin output.
 	@echo -------------------------
 	@echo Should be a noise band around 6000Hz, repeated quietly after 1s.
-	play /tmp/test.wav
+	-sndfile-play /tmp/test.wav
+	@echo Test complete.
 
 install:	targets
-	-mkdirhier	$(INSTALL_PLUGINS_DIR)				\
-			$(INSTALL_INCLUDE_DIR)				\
-			$(INSTALL_BINARY_DIR)
+	-mkdirhier $(INSTALL_PLUGINS_DIR)
+	-mkdirhier $(INSTALL_INCLUDE_DIR)
+	-mkdirhier $(INSTALL_BINARY_DIR)
 	cp ../plugins/* $(INSTALL_PLUGINS_DIR)
 	cp ladspa.h $(INSTALL_INCLUDE_DIR)
 	cp ../bin/* $(INSTALL_BINARY_DIR)
@@ -74,7 +74,7 @@ install:	targets
 	echo ; ../bin/analyseplugin -l ../plugins/sine.so ; echo
 	../bin/analyseplugin ../plugins/amp.so
 	../bin/analyseplugin ../plugins/noise.so
-	time ../bin/applyplugin	-s 1					\
+	../bin/applyplugin	-s 1					\
 				../snd/noise.wav /tmp/test.wav		\
 				../plugins/filter.so lpf 500		\
 				../plugins/filter.so lpf 500		\
