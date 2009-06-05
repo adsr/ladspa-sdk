@@ -1,27 +1,23 @@
-#! /bin/sh /usr/share/dpatch/dpatch-run
-## 01_debian-patch.dpatch by Junichi Uekawa <dancer@debian.org>
-##
-## All lines beginning with `## DP:' are a description of the patch.
-## DP: Debian modifications to ladspa-sdk
-
-@DPATCH@
-
---- ladspa-sdk-1.1.orig/src/makefile
-+++ ladspa-sdk-1.1/src/makefile
-@@ -5,9 +5,9 @@
- # Change these if you want to install somewhere else. In particularly
- # you may wish to remove the middle "local/" part of each entry.
+01_debian-patch by Junichi Uekawa <dancer@debian.org>
+Debian modifications to ladspa-sdk
+Index: ladspa-sdk/src/makefile
+===================================================================
+--- ladspa-sdk.orig/src/makefile	2009-06-05 13:50:20.000000000 +1000
++++ ladspa-sdk/src/makefile	2009-06-05 13:54:46.000000000 +1000
+@@ -4,9 +4,9 @@
+ #
+ # Change these if you want to install somewhere else.
  
--INSTALL_PLUGINS_DIR	=	/usr/local/lib/ladspa/
+-INSTALL_PLUGINS_DIR	=	/usr/lib/ladspa/
 -INSTALL_INCLUDE_DIR	=	/usr/include/
--INSTALL_BINARY_DIR	=	/usr/local/bin/
-+INSTALL_PLUGINS_DIR	?=	/usr/local/lib/ladspa/
+-INSTALL_BINARY_DIR	=	/usr/bin/
++INSTALL_PLUGINS_DIR	?=	/usr/lib/ladspa/
 +INSTALL_INCLUDE_DIR	?=	/usr/include/
-+INSTALL_BINARY_DIR	?=	/usr/local/bin/
++INSTALL_BINARY_DIR	?=	/usr/bin/
  
  ###############################################################################
  #
-@@ -16,7 +16,7 @@
+@@ -15,7 +15,7 @@
  
  INCLUDES	=	-I.
  LIBRARIES	=	-ldl -lm
@@ -30,7 +26,7 @@
  CXXFLAGS	=	$(CFLAGS)
  PLUGINS		=	../plugins/amp.so				\
  			../plugins/delay.so				\
-@@ -36,11 +36,11 @@
+@@ -35,11 +35,11 @@
  
  ../plugins/%.so:	plugins/%.c ladspa.h
  	$(CC) $(CFLAGS) -o plugins/$*.o -c plugins/$*.c
@@ -44,17 +40,23 @@
  
  ###############################################################################
  #
-@@ -59,7 +59,7 @@
- 	play /tmp/test.wav
+@@ -59,9 +59,9 @@
+ 	@echo Test complete.
  
  install:	targets
--	-mkdirhier	$(INSTALL_PLUGINS_DIR)				\
-+	-mkdir -p	$(INSTALL_PLUGINS_DIR)				\
- 			$(INSTALL_INCLUDE_DIR)				\
- 			$(INSTALL_BINARY_DIR)
+-	-mkdirhier $(INSTALL_PLUGINS_DIR)
+-	-mkdirhier $(INSTALL_INCLUDE_DIR)
+-	-mkdirhier $(INSTALL_BINARY_DIR)
++	-mkdir -p $(INSTALL_PLUGINS_DIR)
++	-mkdir -p $(INSTALL_INCLUDE_DIR)
++	-mkdir -p $(INSTALL_BINARY_DIR)
  	cp ../plugins/* $(INSTALL_PLUGINS_DIR)
---- ladspa-sdk-1.1.orig/src/search.c
-+++ ladspa-sdk-1.1/src/search.c
+ 	cp ladspa.h $(INSTALL_INCLUDE_DIR)
+ 	cp ../bin/* $(INSTALL_BINARY_DIR)
+Index: ladspa-sdk/src/search.c
+===================================================================
+--- ladspa-sdk.orig/src/search.c	2009-06-05 13:51:31.000000000 +1000
++++ ladspa-sdk/src/search.c	2009-06-05 13:53:47.000000000 +1000
 @@ -99,10 +99,10 @@
  
    pcLADSPAPath = getenv("LADSPA_PATH");
@@ -67,8 +69,10 @@
    }
    
    pcStart = pcLADSPAPath;
---- ladspa-sdk-1.1.orig/src/load.c
-+++ ladspa-sdk-1.1/src/load.c
+Index: ladspa-sdk/src/load.c
+===================================================================
+--- ladspa-sdk.orig/src/load.c	2009-06-05 13:51:31.000000000 +1000
++++ ladspa-sdk/src/load.c	2009-06-05 13:53:47.000000000 +1000
 @@ -54,6 +54,8 @@
         to search. */
  

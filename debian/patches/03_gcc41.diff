@@ -1,14 +1,11 @@
-#! /bin/sh /usr/share/dpatch/dpatch-run
-## 03_gcc41.dpatch by Ben Hutchings <ben@decadentplace.org.uk>
-##
-## All lines beginning with `## DP:' are a description of the patch.
-## DP: Fix compile failure with GCC 4.1
-## DP: closes: #355989
-
-@DPATCH@
---- a/src/plugins/sine.cpp~	2002-07-06 18:23:17.000000000 +0100
-+++ b/src/plugins/sine.cpp	2006-03-10 01:34:55.587996975 +0000
-@@ -59,6 +59,22 @@
+03_gcc41 by Ben Hutchings <ben@decadentplace.org.uk>
+Fix compile failure with GCC 4.1
+closes: #355989
+Index: ladspa-sdk/src/plugins/sine.cpp
+===================================================================
+--- ladspa-sdk.orig/src/plugins/sine.cpp	2009-06-05 14:04:43.000000000 +1000
++++ ladspa-sdk/src/plugins/sine.cpp	2009-06-05 14:06:50.000000000 +1000
+@@ -68,6 +68,22 @@
  
  /*****************************************************************************/
  
