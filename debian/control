@@ -1,7 +1,7 @@
 Source: ladspa-sdk
 Section: sound
 Priority: optional
-Maintainer: Junichi Uekawa <dancer@debian.org>
+Maintainer: Felipe Sateler <fsateler@gmail.com>
 Build-Depends: debhelper (>> 3.0.0), g++ (>= 4:4.0.0), dpatch
 Standards-Version: 3.6.2
 
