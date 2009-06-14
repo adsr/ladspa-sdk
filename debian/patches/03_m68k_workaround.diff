@@ -3,14 +3,14 @@ m68k gcc ICE's with -O3, reduce to -O2.
 closes: #328285
 Index: ladspa-sdk/src/makefile
 ===================================================================
---- ladspa-sdk.orig/src/makefile	2009-06-05 13:54:46.000000000 +1000
-+++ ladspa-sdk/src/makefile	2009-06-05 13:56:53.000000000 +1000
+--- ladspa-sdk.orig/src/makefile	2009-06-14 13:48:36.000000000 +1000
++++ ladspa-sdk/src/makefile	2009-06-14 13:49:13.000000000 +1000
 @@ -15,7 +15,7 @@
  
  INCLUDES	=	-I.
  LIBRARIES	=	-ldl -lm
--CFLAGS		=	$(INCLUDES) -O3 -fPIC
-+CFLAGS		=	$(INCLUDES) -O2 -fPIC
+-CFLAGS		=	$(INCLUDES) -Wall -Werror -O3 -fPIC
++CFLAGS		=	$(INCLUDES) -Wall -Werror -O2 -fPIC
  CXXFLAGS	=	$(CFLAGS)
  PLUGINS		=	../plugins/amp.so				\
  			../plugins/delay.so				\

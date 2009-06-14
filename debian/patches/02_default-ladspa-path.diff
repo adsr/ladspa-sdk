@@ -1,0 +1,30 @@
+Use a default ladspa path instead of failing when LADSPA_PATH is undefined
+Index: ladspa-sdk/src/load.c
+===================================================================
+--- ladspa-sdk.orig/src/load.c	2009-06-05 14:52:05.000000000 +1000
++++ ladspa-sdk/src/load.c	2009-06-05 14:54:04.000000000 +1000
+@@ -54,6 +54,8 @@
+        to search. */
+ 
+     pcLADSPAPath = getenv("LADSPA_PATH");
++    if (!pcLADSPAPath)
++      pcLADSPAPath = "/usr/lib/ladspa";
+     
+     if (pcLADSPAPath) {
+ 
+Index: ladspa-sdk/src/search.c
+===================================================================
+--- ladspa-sdk.orig/src/search.c	2009-06-05 14:52:05.000000000 +1000
++++ ladspa-sdk/src/search.c	2009-06-05 14:52:57.000000000 +1000
+@@ -99,10 +99,10 @@
+ 
+   pcLADSPAPath = getenv("LADSPA_PATH");
+   if (!pcLADSPAPath) {
++    pcLADSPAPath = "/usr/lib/ladspa/";
+     fprintf(stderr,
+ 	    "Warning: You do not have a LADSPA_PATH "
+ 	    "environment variable set.\n");
+-    return;
+   }
+   
+   pcStart = pcLADSPAPath;
