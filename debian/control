@@ -3,7 +3,7 @@ Section: sound
 Priority: optional
 Maintainer: Felipe Sateler <fsateler@gmail.com>
 Build-Depends: debhelper (>= 7), g++ (>= 4:4.0.0), quilt (>= 0.40)
-Standards-Version: 3.6.2
+Standards-Version: 3.8.1
 
 Package: ladspa-sdk
 Architecture: any
