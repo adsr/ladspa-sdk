@@ -9,6 +9,8 @@
 
 
 override_dh_auto_build:
+	# git doesn't preserve empty dirs, this is for git-buildpackage
+	mkdir -p plugins
 	$(MAKE) -C src targets
 
 override_dh_auto_clean:
