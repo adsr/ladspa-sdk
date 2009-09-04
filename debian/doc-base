@@ -3,7 +3,7 @@ Title: LADSPA-SDK Manual
 Author: Richard Furse
 Abstract: This manual describes what LADSPA-SDK is
  and how it can be used. 
-Section: Apps/Sound
+Section: Sound
 
 Format: HTML
 Index: /usr/share/doc/ladspa-sdk/index.html
