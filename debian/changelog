@@ -1,3 +1,25 @@
+ladspa-sdk (1.13-1) unstable; urgency=low
+
+  * Imported Upstream version 1.13
+    - No more mismatched free/delete. Closes: #342156
+  * Set Debian Multimedia Maintainers as maintainer. Closes: #520269
+  * Switch from dpatch to quilt
+  * Drop patch 03_gcc41, not needed anymore
+  * Switch to debhelper compat level 7
+  * Split the debian patch into logical changes
+  * Add misc:Depends to Depends line
+  * Build-Depend on debhelper >= 7
+  * Bump standards version, no changes needed
+  * Note use of quilt for patches
+  * Fix build error with git-buildpackage
+  * Fix doc-base section
+  * Remove extra whitespace
+  * Remove useless dir file
+  * Add Vcs-* fields
+  * Drop versioned build-depends on g++, required version in oldstable
+
+ -- Felipe Sateler <fsateler@gmail.com>  Tue, 03 Nov 2009 20:16:48 -0300
+
 ladspa-sdk (1.1-6) unstable; urgency=low
 
   * wrong symlink installed, install a better symlink for ladspa.h.txt.
