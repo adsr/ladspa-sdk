@@ -17,8 +17,10 @@ ladspa-sdk (1.13-1) unstable; urgency=low
   * Remove useless dir file
   * Add Vcs-* fields
   * Drop versioned build-depends on g++, required version in oldstable
+  * Fix linkage of C plugins
+  * Clarify copyright.
 
- -- Felipe Sateler <fsateler@gmail.com>  Tue, 03 Nov 2009 20:16:48 -0300
+ -- Felipe Sateler <fsateler@gmail.com>  Tue, 03 Nov 2009 20:46:40 -0300
 
 ladspa-sdk (1.1-6) unstable; urgency=low
 
