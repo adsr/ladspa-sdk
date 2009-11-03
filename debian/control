@@ -3,7 +3,6 @@ Section: sound
 Priority: optional
 Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
 Build-Depends: debhelper (>= 7.0.50~),
-               g++ (>= 4:4.0.0),
                quilt (>= 0.40)
 Standards-Version: 3.8.3
 Uploaders: Felipe Sateler <fsateler@gmail.com>
