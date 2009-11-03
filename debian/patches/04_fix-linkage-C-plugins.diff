@@ -1,0 +1,23 @@
+LD does not automatically insert needed libraries, we must specify them
+Index: ladspa-sdk/src/makefile
+===================================================================
+--- ladspa-sdk.orig/src/makefile	2009-11-03 20:36:21.000000000 -0300
++++ ladspa-sdk/src/makefile	2009-11-03 20:37:25.000000000 -0300
+@@ -14,7 +14,7 @@
+ #
+ 
+ INCLUDES	=	-I.
+-LIBRARIES	=	-ldl -lm
++LIBRARIES	=	-ldl -lm -lc
+ CFLAGS		=	$(INCLUDES) -Wall -Werror -O2 -fPIC
+ CXXFLAGS	=	$(CFLAGS)
+ PLUGINS		=	../plugins/amp.so				\
+@@ -35,7 +35,7 @@
+ 
+ ../plugins/%.so:	plugins/%.c ladspa.h
+ 	$(CC) $(CFLAGS) -o plugins/$*.o -c plugins/$*.c
+-	$(LD) -o ../plugins/$*.so plugins/$*.o -shared
++	$(LD) -o ../plugins/$*.so plugins/$*.o -shared $(LIBRARIES)
+ 
+ ../plugins/%.so:	plugins/%.cpp ladspa.h
+ 	$(CPP) $(CXXFLAGS) -o plugins/$*.o -c plugins/$*.cpp

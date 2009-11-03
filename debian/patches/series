@@ -1,3 +1,4 @@
 01_no-mkdirhier.diff
 02_default-ladspa-path.diff
 03_m68k_workaround.diff
+04_fix-linkage-C-plugins.diff
