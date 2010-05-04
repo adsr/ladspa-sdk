@@ -3,7 +3,7 @@ Section: sound
 Priority: optional
 Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
 Build-Depends: debhelper (>= 7.0.50~),
-               quilt (>= 0.40)
+               quilt (>= 0.46-7~)
 Standards-Version: 3.8.3
 Uploaders: Felipe Sateler <fsateler@gmail.com>
 Vcs-Git: git://git.debian.org/git/pkg-multimedia/ladspa-sdk.git
