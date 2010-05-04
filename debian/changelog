@@ -1,7 +1,7 @@
 ladspa-sdk (1.13-1) unstable; urgency=low
 
   * Imported Upstream version 1.13
-    - No more mismatched free/delete. Closes: #342156
+    - No more mismatched free/delete. Closes: #342156, #561560
   * Set Debian Multimedia Maintainers as maintainer. Closes: #520269
   * Switch from dpatch to quilt
   * Drop patch 03_gcc41, not needed anymore
@@ -20,7 +20,7 @@ ladspa-sdk (1.13-1) unstable; urgency=low
   * Fix linkage of C plugins
   * Clarify copyright.
 
- -- Felipe Sateler <fsateler@gmail.com>  Tue, 03 Nov 2009 20:46:40 -0300
+ -- Felipe Sateler <fsateler@gmail.com>  Tue, 04 May 2010 18:01:51 -0400
 
 ladspa-sdk (1.1-6) unstable; urgency=low
 
