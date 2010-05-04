@@ -19,8 +19,9 @@ ladspa-sdk (1.13-1) unstable; urgency=low
   * Drop versioned build-depends on g++, required version in oldstable
   * Fix linkage of C plugins
   * Clarify copyright.
+  * Explicitly use 1.0 source format
 
- -- Felipe Sateler <fsateler@gmail.com>  Tue, 04 May 2010 18:01:51 -0400
+ -- Felipe Sateler <fsateler@gmail.com>  Tue, 04 May 2010 18:16:41 -0400
 
 ladspa-sdk (1.1-6) unstable; urgency=low
 
