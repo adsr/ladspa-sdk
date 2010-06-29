@@ -8,6 +8,7 @@ Standards-Version: 3.9.0.0
 Uploaders: Felipe Sateler <fsateler@debian.org>
 Vcs-Git: git://git.debian.org/git/pkg-multimedia/ladspa-sdk.git
 Vcs-Browser: http://git.debian.org/?p=pkg-multimedia/ladspa-sdk.git
+Homepage: http://www.ladspa.org/
 
 Package: ladspa-sdk
 Architecture: any
