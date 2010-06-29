@@ -20,8 +20,9 @@ ladspa-sdk (1.13-1) unstable; urgency=low
   * Fix linkage of C plugins
   * Clarify copyright.
   * Explicitly use 1.0 source format
+  * Add homepage field
 
- -- Felipe Sateler <fsateler@gmail.com>  Tue, 04 May 2010 18:16:41 -0400
+ -- Felipe Sateler <fsateler@debian.org>  Tue, 29 Jun 2010 13:31:44 -0400
 
 ladspa-sdk (1.1-6) unstable; urgency=low
 
