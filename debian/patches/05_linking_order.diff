@@ -1,0 +1,38 @@
+Description: Correct linking order to prevent FTBFS with GCC4.5 + binutils-gold.
+Author: Alessio Treglia <quadrispro@ubuntu.com>
+Forwarded: no
+---
+ src/makefile |   15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+
+--- ladspa-sdk-1.13.orig/src/makefile
++++ ladspa-sdk-1.13/src/makefile
+@@ -90,19 +90,22 @@ targets:	$(PLUGINS) $(PROGRAMS)
+ #
+ 
+ ../bin/applyplugin:	applyplugin.o load.o default.o
+-	$(CC) $(CFLAGS) $(LIBRARIES)					\
++	$(CC) $(CFLAGS)					\
+ 		-o ../bin/applyplugin					\
+-		applyplugin.o load.o default.o
++		applyplugin.o load.o default.o \
++		$(LIBRARIES)
+ 
+ ../bin/analyseplugin:	analyseplugin.o load.o default.o
+-	$(CC) $(CFLAGS) $(LIBRARIES)					\
++	$(CC) $(CFLAGS)					\
+ 		-o ../bin/analyseplugin 				\
+-		analyseplugin.o load.o default.o
++		analyseplugin.o load.o default.o \
++		$(LIBRARIES)
+ 
+ ../bin/listplugins:	listplugins.o search.o
+-	$(CC) $(CFLAGS) $(LIBRARIES)					\
++	$(CC) $(CFLAGS)					\
+ 		-o ../bin/listplugins	 				\
+-		listplugins.o search.o
++		listplugins.o search.o \
++		$(LIBRARIES)
+ 
+ ###############################################################################
+ #
