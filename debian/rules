@@ -3,8 +3,6 @@
 include /usr/share/cdbs/1/class/makefile.mk
 include /usr/share/cdbs/1/rules/debhelper.mk
 
-include /usr/share/cdbs/1/rules/patchsys-quilt.mk
-
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
