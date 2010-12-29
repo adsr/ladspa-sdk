@@ -1,26 +1,25 @@
 #!/usr/bin/make -f
 
+include /usr/share/cdbs/1/class/makefile.mk
+include /usr/share/cdbs/1/rules/debhelper.mk
+
+include /usr/share/cdbs/1/rules/patchsys-quilt.mk
+
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-%:
-	dh --with quilt $@
-
-
-
-override_dh_auto_build:
-	# git doesn't preserve empty dirs, this is for git-buildpackage
-	mkdir -p plugins
-	mkdir -p bin
-	$(MAKE) -C src targets
-
-override_dh_auto_clean:
-	dh_auto_clean
-	$(MAKE) -C src clean
-
-override_dh_auto_install:
-	$(MAKE) -C src install DESTDIR=$(CURDIR)/debian/ladspa-sdk \
+DEB_BUILDDIR = src
+DEB_MAKE_BUILD_TARGET = targets
+DEB_MAKE_INSTALL_TARGET = install DESTDIR=$(CURDIR)/debian/ladspa-sdk \
 	INSTALL_PLUGINS_DIR=$(CURDIR)/debian/ladspa-sdk/usr/lib/ladspa/ \
 	INSTALL_INCLUDE_DIR=$(CURDIR)/debian/ladspa-sdk/usr/include/ \
-	INSTALL_BINARY_DIR=$(CURDIR)/debian/ladspa-sdk/usr/bin/ 
+	INSTALL_BINARY_DIR=$(CURDIR)/debian/ladspa-sdk/usr/bin/
+
+CFLAGS += -fPIC
+CXXFLAGS += -fPIC
+
+pre-build::
+# git doesn't preserve empty dirs, this is for git-buildpackage
+	mkdir -p plugins
+	mkdir -p bin
 
