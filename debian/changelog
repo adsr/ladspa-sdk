@@ -1,3 +1,16 @@
+ladspa-sdk (1.13-2) UNRELEASED; urgency=low
+
+  [ Felipe Sateler ]
+  * Use only 3 digits precision on debian-policy version
+  * Add git-buildpackage config file
+  * Switch to CDBS
+  * Switch to 3.0 (quilt) source format
+
+  [ Alessio Treglia ]
+  * Correct linking order to fix FTBFS with GCC4.5 + binutils-gold.
+
+ -- Felipe Sateler <fsateler@debian.org>  Tue, 28 Dec 2010 21:41:55 -0300
+
 ladspa-sdk (1.13-1) unstable; urgency=low
 
   * Imported Upstream version 1.13
