@@ -5,7 +5,7 @@ Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alio
 Build-Depends:
  cdbs,
  debhelper (>= 7.0.50~)
-Standards-Version: 3.9.0
+Standards-Version: 3.9.3
 Uploaders:
  Felipe Sateler <fsateler@debian.org>
 Vcs-Git: git://git.debian.org/git/pkg-multimedia/ladspa-sdk.git
