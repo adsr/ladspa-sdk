@@ -2,24 +2,31 @@ Source: ladspa-sdk
 Section: sound
 Priority: optional
 Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
-Build-Depends: debhelper (>= 7.0.50~),
- cdbs
+Build-Depends:
+ cdbs,
+ debhelper (>= 7.0.50~)
 Standards-Version: 3.9.0
-Uploaders: Felipe Sateler <fsateler@debian.org>
+Uploaders:
+ Felipe Sateler <fsateler@debian.org>
 Vcs-Git: git://git.debian.org/git/pkg-multimedia/ladspa-sdk.git
 Vcs-Browser: http://git.debian.org/?p=pkg-multimedia/ladspa-sdk.git
 Homepage: http://www.ladspa.org/
 
 Package: ladspa-sdk
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Provides: ladspa-host, ladspa-plugin, ladspa-sdk-dev
-Conflicts: ladspa-sdk-dev
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends}
+Provides:
+ ladspa-host,
+ ladspa-plugin,
+ ladspa-sdk-dev
+Conflicts:
+ ladspa-sdk-dev
 Description: sample tools for linux-audio-dev plugin architecture
  LADSPA is a free standard specification for audio effect plugins.
  .
- Contains sample plugins, and analyseplugin, listplugin, applyplugin 
+ Contains sample plugins, and analyseplugin, listplugin, applyplugin
  programs, and the ladspa.h, the LADSPA specification.
  .
  Please build-depend on this package if you need ladspa.h
-
