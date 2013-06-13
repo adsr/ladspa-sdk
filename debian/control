@@ -7,7 +7,8 @@ Build-Depends:
  debhelper (>= 7.0.50~)
 Standards-Version: 3.9.3
 Uploaders:
- Felipe Sateler <fsateler@debian.org>
+ Felipe Sateler <fsateler@debian.org>,
+ Jaromír Mikeš <mira.mikes@seznam.cz>
 Vcs-Git: git://git.debian.org/git/pkg-multimedia/ladspa-sdk.git
 Vcs-Browser: http://git.debian.org/?p=pkg-multimedia/ladspa-sdk.git
 Homepage: http://www.ladspa.org/
