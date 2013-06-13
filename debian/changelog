@@ -9,7 +9,16 @@ ladspa-sdk (1.13-2) UNRELEASED; urgency=low
   [ Alessio Treglia ]
   * Correct linking order to fix FTBFS with GCC4.5 + binutils-gold.
 
- -- Felipe Sateler <fsateler@debian.org>  Tue, 28 Dec 2010 21:41:55 -0300
+  [ Jaromír Mikeš ]
+  * Added myself as uploader.
+  * Added patch fixing include.
+  * Set dh/compat 9.
+  * Added .gitignore file.
+  * Added local-option file.
+  * Added watch file.
+  * Fix VCS canonical URLs.
+
+ -- Jaromír Mikeš <mira.mikes@seznam.cz>  Fri, 14 Jun 2013 01:13:40 +0200
 
 ladspa-sdk (1.13-1) unstable; urgency=low
 
