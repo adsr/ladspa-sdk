@@ -4,8 +4,8 @@ Priority: optional
 Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
 Build-Depends:
  cdbs,
- debhelper (>= 7.0.50~)
-Standards-Version: 3.9.3
+ debhelper (>= 9)
+Standards-Version: 3.9.4
 Uploaders:
  Felipe Sateler <fsateler@debian.org>,
  Jaromír Mikeš <mira.mikes@seznam.cz>
