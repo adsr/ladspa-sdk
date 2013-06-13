@@ -3,3 +3,4 @@
 03_m68k_workaround.diff
 04_fix-linkage-C-plugins.diff
 05_linking_order.diff
+06_include_fix.patch
