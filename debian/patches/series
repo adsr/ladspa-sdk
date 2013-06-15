@@ -4,3 +4,4 @@
 04_fix-linkage-C-plugins.diff
 05_linking_order.diff
 06_include_fix.patch
+07-hardening-fix.patch
