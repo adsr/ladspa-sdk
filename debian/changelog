@@ -17,8 +17,9 @@ ladspa-sdk (1.13-2) UNRELEASED; urgency=low
   * Added local-option file.
   * Added watch file.
   * Fix VCS canonical URLs.
+  * Fix hardening.
 
- -- Jaromír Mikeš <mira.mikes@seznam.cz>  Fri, 14 Jun 2013 01:13:40 +0200
+ -- Jaromír Mikeš <mira.mikes@seznam.cz>  Sat, 15 Jun 2013 12:11:43 +0200
 
 ladspa-sdk (1.13-1) unstable; urgency=low
 
