@@ -1,7 +1,4 @@
+00_standard-makefile.patch
 01_no-mkdirhier.diff
 02_default-ladspa-path.diff
-03_m68k_workaround.diff
-04_fix-linkage-C-plugins.diff
 05_linking_order.diff
-06_include_fix.patch
-07-hardening-fix.patch

@@ -1,0 +1,47 @@
+Allow overriding of build parameters via the standard make variables
+--- a/src/makefile
++++ b/src/makefile
+@@ -15,8 +15,9 @@
+ 
+ INCLUDES	=	-I.
+ LIBRARIES	=	-ldl -lm
+-CFLAGS		=	$(INCLUDES) -Wall -Werror -O3 -fPIC
+-CXXFLAGS	=	$(CFLAGS)
++MANDATORY	=	$(INCLUDES) -fPIC
++CFLAGS		?=	-Wall -Werror -O3
++CXXFLAGS	?=	$(CFLAGS)
+ PLUGINS		=	../plugins/amp.so				\
+ 			../plugins/delay.so				\
+ 			../plugins/filter.so				\
+@@ -25,21 +26,25 @@
+ PROGRAMS	=	../bin/analyseplugin				\
+ 			../bin/applyplugin 				\
+ 			../bin/listplugins
+-CC		=	cc
+-CPP		=	c++
++CC		?=	cc
++CXX		?=	c++
++
++WITH_INIT 	= noise amp delay filter
+ 
+ ###############################################################################
+ #
+ # RULES TO BUILD PLUGINS FROM C OR C++ CODE
+ #
+ 
++$(patsubst %, ../plugins/%.so, $(WITH_INIT)) : NOSTART = -nostartfiles
++
+ ../plugins/%.so:	plugins/%.c ladspa.h
+-	$(CC) $(CFLAGS) -o plugins/$*.o -c plugins/$*.c
+-	$(LD) -o ../plugins/$*.so plugins/$*.o -shared
++	$(CC) $(MANDATORY) $(CPPFLAGS) $(CFLAGS) -o plugins/$*.o -c plugins/$*.c
++	$(CC) $(NOSTART) $(MANDATORY) -o ../plugins/$*.so plugins/$*.o -shared $(CFLAGS) $(LDFLAGS) $(LIBRARIES)
+ 
+ ../plugins/%.so:	plugins/%.cpp ladspa.h
+-	$(CPP) $(CXXFLAGS) -o plugins/$*.o -c plugins/$*.cpp
+-	$(CPP) -o ../plugins/$*.so plugins/$*.o -shared
++	$(CXX) $(MANDATORY) $(CPPFLAGS) $(CXXFLAGS) -o plugins/$*.o -c plugins/$*.cpp
++	$(CXX) $(MANDATORY) -o ../plugins/$*.so plugins/$*.o -shared $(CXXFLAGS) $(LDFLAGS) $(LIBRARIES)
+ 
+ ###############################################################################
+ #

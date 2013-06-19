@@ -13,9 +13,6 @@ DEB_MAKE_INSTALL_TARGET = install DESTDIR=$(CURDIR)/debian/ladspa-sdk \
 	INSTALL_INCLUDE_DIR=$(CURDIR)/debian/ladspa-sdk/usr/include/ \
 	INSTALL_BINARY_DIR=$(CURDIR)/debian/ladspa-sdk/usr/bin/
 
-CFLAGS += -fPIC
-CXXFLAGS += -fPIC
-
 pre-build::
 # git doesn't preserve empty dirs, this is for git-buildpackage
 	mkdir -p plugins

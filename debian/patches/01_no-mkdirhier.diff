@@ -1,9 +1,7 @@
 Use mkdir -p instead of mkdirhier to avoid build-dep on xutils-dev
-Index: ladspa-sdk/src/makefile
-===================================================================
---- ladspa-sdk.orig/src/makefile	2009-06-05 14:49:37.000000000 +1000
-+++ ladspa-sdk/src/makefile	2009-06-05 14:50:07.000000000 +1000
-@@ -59,9 +59,9 @@
+--- a/src/makefile
++++ b/src/makefile
+@@ -64,9 +64,9 @@
  	@echo Test complete.
  
  install:	targets
