@@ -1,10 +1,5 @@
 #!/usr/bin/make -f
 
-CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
-CFLAGS:=$(shell dpkg-buildflags --get CFLAGS)
-CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS)
-LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
-
 include /usr/share/cdbs/1/class/makefile.mk
 include /usr/share/cdbs/1/rules/debhelper.mk
 
