@@ -11,28 +11,28 @@ Forwarded: no
  #
  
  ../bin/applyplugin:	applyplugin.o load.o default.o
--	$(CC) $(CFLAGS) $(LIBRARIES)					\
-+	$(CC) $(CFLAGS)					\
+-	$(CC) $(CFLAGS) $(LIBRARIES) $(LDFLAGS)				\
++	$(CC) $(CFLAGS)							\
  		-o ../bin/applyplugin					\
 -		applyplugin.o load.o default.o
-+		applyplugin.o load.o default.o \
-+		$(LIBRARIES)
++		applyplugin.o load.o default.o				\
++		$(LIBRARIES) $(LDFLAGS)
  
  ../bin/analyseplugin:	analyseplugin.o load.o default.o
--	$(CC) $(CFLAGS) $(LIBRARIES)					\
-+	$(CC) $(CFLAGS)					\
+-	$(CC) $(CFLAGS) $(LIBRARIES) $(LDFLAGS)				\
++	$(CC) $(CFLAGS) 						\
  		-o ../bin/analyseplugin 				\
 -		analyseplugin.o load.o default.o
-+		analyseplugin.o load.o default.o \
-+		$(LIBRARIES)
++		analyseplugin.o load.o default.o			\
++		$(LIBRARIES) $(LDFLAGS)
  
  ../bin/listplugins:	listplugins.o search.o
--	$(CC) $(CFLAGS) $(LIBRARIES)					\
-+	$(CC) $(CFLAGS)					\
+-	$(CC) $(CFLAGS) $(LIBRARIES) $(LDFLAGS)				\
++	$(CC) $(CFLAGS) 						\
  		-o ../bin/listplugins	 				\
 -		listplugins.o search.o
-+		listplugins.o search.o \
-+		$(LIBRARIES)
++		listplugins.o search.o					\
++		$(LIBRARIES) $(LDFLAGS)
  
  ###############################################################################
  #

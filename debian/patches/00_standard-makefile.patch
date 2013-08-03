@@ -45,3 +45,24 @@ Allow overriding of build parameters via the standard make variables
  
  ###############################################################################
  #
+@@ -90,17 +95,17 @@
+ #
+ 
+ ../bin/applyplugin:	applyplugin.o load.o default.o
+-	$(CC) $(CFLAGS) $(LIBRARIES)					\
++	$(CC) $(CFLAGS) $(LIBRARIES) $(LDFLAGS)				\
+ 		-o ../bin/applyplugin					\
+ 		applyplugin.o load.o default.o
+ 
+ ../bin/analyseplugin:	analyseplugin.o load.o default.o
+-	$(CC) $(CFLAGS) $(LIBRARIES)					\
++	$(CC) $(CFLAGS) $(LIBRARIES) $(LDFLAGS)				\
+ 		-o ../bin/analyseplugin 				\
+ 		analyseplugin.o load.o default.o
+ 
+ ../bin/listplugins:	listplugins.o search.o
+-	$(CC) $(CFLAGS) $(LIBRARIES)					\
++	$(CC) $(CFLAGS) $(LIBRARIES) $(LDFLAGS)				\
+ 		-o ../bin/listplugins	 				\
+ 		listplugins.o search.o
+ 
