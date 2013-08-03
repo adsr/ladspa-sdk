@@ -1,10 +1,11 @@
-ladspa-sdk (1.13-2) UNRELEASED; urgency=low
+ladspa-sdk (1.13-2) unstable; urgency=low
 
   [ Felipe Sateler ]
-  * Use only 3 digits precision on debian-policy version
-  * Add git-buildpackage config file
-  * Switch to CDBS
-  * Switch to 3.0 (quilt) source format
+  * Use only 3 digits precision on debian-policy version.
+  * Add git-buildpackage config file.
+  * Switch to CDBS.
+  * Switch to 3.0 (quilt) source format.
+  * Rework makefile patches.
 
   [ Alessio Treglia ]
   * Correct linking order to fix FTBFS with GCC4.5 + binutils-gold.
