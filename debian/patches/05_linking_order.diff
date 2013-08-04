@@ -1,6 +1,6 @@
 Description: Correct linking order to prevent FTBFS with GCC4.5 + binutils-gold.
 Author: Alessio Treglia <quadrispro@ubuntu.com>
-Forwarded: no
+Forwarded: Yes
 ---
  src/makefile |   15 +++++++++------
  1 file changed, 9 insertions(+), 6 deletions(-)

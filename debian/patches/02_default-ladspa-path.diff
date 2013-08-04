@@ -1,4 +1,5 @@
 Use a default ladspa path instead of failing when LADSPA_PATH is undefined
+Forwarded: Yes
 --- a/src/load.c
 +++ b/src/load.c
 @@ -54,6 +54,8 @@
