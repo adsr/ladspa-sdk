@@ -1,9 +1,12 @@
-ladspa-sdk (1.13-3) UNRELEASED; urgency=medium
+ladspa-sdk (1.13-3) unstable; urgency=medium
 
   * Patches forwarded
-  * Set dh 10.
+  * Set dh/compat 10.
   * Bump Standards.
   * Fix VCS fields.
+  * Sign tags.
+  * Fix hardening.
+  * Update copyright file.
 
  -- Jaromír Mikeš <mira.mikes@seznam.cz>  Thu, 22 Dec 2016 22:13:45 +0100
 
