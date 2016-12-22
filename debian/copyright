@@ -1,17 +1,39 @@
-This package was debianized by Junichi Uekawa <dancer@debian.org> on
-Wed,  9 May 2001 20:19:32 +0900.
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: ladspa-sdk
+Upstream-Contact: richard@muse.demon.co.uk
+Source: http://www.ladspa.org
+Copyright: 2000-2002 Richard W.E. Furse, Paul Barton-Davis and Stefan Westerfeld.
 
-It was downloaded from http://www.ladspa.org
+Files: *
+Copyright:
+ Richard W.E. Furse
+ Paul Barton-Davis
+ Stefan Westerfeld
+License: LGPL-2.1+
 
-Upstream Authors:
-   Richard W.E. Furse
-   Paul Barton-Davis
-   Stefan Westerfeld
+Files: debian/*
+Copyright:
+ 2001-2007 Junichi Uekawa <dancer@debian.org>
+ 2009-2013 Felipe Sateler <fsateler@debian.org>
+ 2013-2016 Jaromír Mikeš <mira.mikes@seznam.cz>
+License: LGPL-2.1+
 
-Copyright (C) 2000-2002 Richard W.E. Furse, Paul Barton-Davis and Stefan Westerfeld.
+License: LGPL-2.1+
+ This library is free software; you can redistribute it and/or modify it
+ under the terms of the GNU Lesser General Public License as published
+ by the Free Software Foundation; either version 2.1 of the License, or
+ (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+ General Public License for more details.
+ .
+ On Debian GNU systems, the complete text of the GNU Lesser General
+ Public License (LGPL) version 2.1 or later can be found in
+ '/usr/share/common-licenses/LGPL-2.1'.
+ .
+ You should have received a copy of the GNU Lesser General Public
+ License along with this program.  If not, see
+ <http://www.gnu.org/licenses/>.
 
-
-The LADSPA Software Development Kit and the LADSPA plugin API
-itself are licensed under LGPL version 2.1 or later.
-
-See /usr/share/common-licenses/LGPL-2.1 on Debian systems.
