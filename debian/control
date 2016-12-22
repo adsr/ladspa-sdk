@@ -5,7 +5,7 @@ Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alio
 Build-Depends:
  cdbs,
  debhelper (>= 10)
-Standards-Version: 3.9.4
+Standards-Version: 3.9.8
 Uploaders:
  Felipe Sateler <fsateler@debian.org>,
  Jaromír Mikeš <mira.mikes@seznam.cz>
