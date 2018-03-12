@@ -97,7 +97,7 @@ ladspa-sdk (1.1-3) unstable; urgency=low
   * standards-version 3.6.2
   * use dpatch to maintain Debian patch.
   - 01_debian-patch: the Debian patch.
-  
+
  -- Junichi Uekawa <dancer@debian.org>  Sat, 20 Aug 2005 11:05:43 +0900
 
 ladspa-sdk (1.1-2) unstable; urgency=low
@@ -111,7 +111,7 @@ ladspa-sdk (1.1-2) unstable; urgency=low
 
 ladspa-sdk (1.1-1) unstable; urgency=low
 
-  * New upstream release 
+  * New upstream release
   * forward-port local hack to check /usr/lib/ladspa even if env variable is
     not set
 
